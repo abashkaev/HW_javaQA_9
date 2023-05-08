@@ -1,33 +1,54 @@
 package ru.netology.radio;
 
 public class Radio {
-    private int numberStation;
+    private int selectStation = 0;
+    private int totalStation = 10;
 
-    private int volume;
+    private int volume = 0;
 
-
-    public int getNumberStation() {
-        return numberStation;
+    public Radio(int volume){
+        this.volume = volume;
     }
 
-    public void setNumberStation(int newNumberStation) {
-        if (newNumberStation < 0) {
-            newNumberStation = 9;
+    public Radio (int totalStation, int selectStation) {
+        this.totalStation = totalStation;
+        this.selectStation = selectStation;
+    }
+    public int getTotalStation() {
+        return totalStation;
+    }
+    public void setTotalStation(int totalStation) {
+        if (totalStation < 1) {
+            return;
         }
-        if (newNumberStation > 9) {
-            newNumberStation = 0;
+        this.totalStation = totalStation;
+    }
+
+    public int getSelectStation() {
+        return selectStation;
+    }
+
+    public void setSelectStation(int newSelectStation) {
+        if (newSelectStation > totalStation) {
+            return;
         }
-        numberStation = newNumberStation;
+        if (newSelectStation < 0) {
+            newSelectStation = totalStation - 1;
+        }
+        if (newSelectStation >= totalStation) {
+            newSelectStation = 0;
+        }
+        selectStation = newSelectStation;
     }
 
     public void nextStation() {
-        int changeNextStation = numberStation + 1;
-        setNumberStation(changeNextStation);
+        int changeNextStation = selectStation + 1;
+        setSelectStation(changeNextStation);
     }
 
     public void previousStation() {
-        int changePreviousStation = numberStation - 1;
-        setNumberStation(changePreviousStation);
+        int changePreviousStation = selectStation - 1;
+        setSelectStation(changePreviousStation);
     }
 
     int getVolume() {
@@ -36,15 +57,15 @@ public class Radio {
 
     public void setVolume(int newVolume) {
         if (newVolume < 0) {
-            newVolume = 0;
+            return;
         }
         if (newVolume > 100) {
-            newVolume = 100;
+            return;
         }
         volume = newVolume;
     }
 
-    public void turnVolumeUP() {
+    public void turnVolumeUp() {
         int volumeUp = volume + 1;
         setVolume(volumeUp);
     }
