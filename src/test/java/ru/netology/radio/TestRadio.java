@@ -7,7 +7,7 @@ public class TestRadio {
 
     @Test
     public void settUpStation() {
-        Radio rad = new Radio(10,3);
+        Radio rad = new Radio(10, 3);
 
         rad.nextStation();
         int expected = 4;
@@ -18,7 +18,7 @@ public class TestRadio {
 
     @Test
     public void setPreviousStation() {
-        Radio rad = new Radio(10,5);
+        Radio rad = new Radio(10, 5);
 
         rad.previousStation();
         int expected = 4;
@@ -98,13 +98,14 @@ public class TestRadio {
     }
 
     @Test
-    public void changeTotalStations () {
+    public void changeTotalStations() {
         Radio rad = new Radio(10, 1);
 
         rad.setTotalStation(20);
 
         Assertions.assertEquals(20, rad.getTotalStation());
     }
+
     @Test
     public void setTotalStationUnderOne() {
         Radio rad = new Radio(10, 1);
@@ -112,6 +113,7 @@ public class TestRadio {
 
         Assertions.assertEquals(10, rad.getTotalStation());
     }
+
     @Test
     public void setSelectStationAboveTotalStation() {
         Radio rad = new Radio(10, 5);

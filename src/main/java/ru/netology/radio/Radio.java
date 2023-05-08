@@ -6,17 +6,19 @@ public class Radio {
 
     private int volume = 0;
 
-    public Radio(int volume){
+    public Radio(int volume) {
         this.volume = volume;
     }
 
-    public Radio (int totalStation, int selectStation) {
+    public Radio(int totalStation, int selectStation) {
         this.totalStation = totalStation;
         this.selectStation = selectStation;
     }
+
     public int getTotalStation() {
         return totalStation;
     }
+
     public void setTotalStation(int totalStation) {
         if (totalStation < 1) {
             return;
