@@ -7,8 +7,8 @@ public class TestRadio {
 
     @Test
     public void settUpStation() {
-        Radio rad = new Radio(10, 3);
-
+        Radio rad = new Radio(10);
+        rad.setSelectStation(3);
         rad.nextStation();
         int expected = 4;
         int actual = rad.getSelectStation();
@@ -18,8 +18,8 @@ public class TestRadio {
 
     @Test
     public void setPreviousStation() {
-        Radio rad = new Radio(10, 5);
-
+        Radio rad = new Radio(10);
+        rad.setSelectStation(5);
         rad.previousStation();
         int expected = 4;
         int actual = rad.getSelectStation();
@@ -29,7 +29,7 @@ public class TestRadio {
 
     @Test
     public void settPreviousStationUnderZero() {
-        Radio rad = new Radio(10, 0);
+        Radio rad = new Radio(10);
 
         rad.previousStation();
         int expected = 9;
@@ -40,8 +40,8 @@ public class TestRadio {
 
     @Test
     public void settNextStationMoreNine() {
-        Radio rad = new Radio(10, 9);
-
+        Radio rad = new Radio();
+        rad.setSelectStation(9);
         rad.nextStation();
         int expected = 0;
         int actual = rad.getSelectStation();
@@ -51,8 +51,8 @@ public class TestRadio {
 
     @Test
     public void settVolumeUp() {
-        Radio rad = new Radio(98);
-
+        Radio rad = new Radio();
+        rad.setVolume(98);
         rad.turnVolumeUp();
 
         int expected = 99;
@@ -75,8 +75,8 @@ public class TestRadio {
 
     @Test
     public void settVolumeAboveMax() {
-        Radio rad = new Radio(100);
-
+        Radio rad = new Radio();
+        rad.setVolume(100);
         rad.turnVolumeUp();
 
         int expected = 100;
@@ -99,7 +99,7 @@ public class TestRadio {
 
     @Test
     public void changeTotalStations() {
-        Radio rad = new Radio(10, 1);
+        Radio rad = new Radio(10);
 
         rad.setTotalStation(20);
 
@@ -108,7 +108,7 @@ public class TestRadio {
 
     @Test
     public void setTotalStationUnderOne() {
-        Radio rad = new Radio(10, 1);
+        Radio rad = new Radio(10);
         rad.setTotalStation(0);
 
         Assertions.assertEquals(10, rad.getTotalStation());
@@ -116,8 +116,8 @@ public class TestRadio {
 
     @Test
     public void setSelectStationAboveTotalStation() {
-        Radio rad = new Radio(10, 5);
-
+        Radio rad = new Radio(10);
+        rad.setSelectStation(5);
         rad.setSelectStation(15);
 
         Assertions.assertEquals(5, rad.getSelectStation());

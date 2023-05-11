@@ -6,13 +6,12 @@ public class Radio {
 
     private int volume = 0;
 
-    public Radio(int volume) {
-        this.volume = volume;
+    public Radio() {
+
     }
 
-    public Radio(int totalStation, int selectStation) {
+    public Radio(int totalStation) {
         this.totalStation = totalStation;
-        this.selectStation = selectStation;
     }
 
     public int getTotalStation() {
